@@ -14,7 +14,7 @@ class Dog
 
     def self.create(hash)
         dog = Dog.new(hash)
-        hash.each{|k,v| dog.send(("{k}="), v)}
+        hash.each{|k,v| dog.send(("{k}="), v)} #metaprogramming to assign attributes to dog 
         dog.save
         dog
     end

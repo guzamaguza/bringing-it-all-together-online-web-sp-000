@@ -66,8 +66,8 @@ class Dog
           dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
           if !dog.empty?
             #if the instance of the dog DOES NOT exist then it creates a new Dog instance
-            dog_data = dog[0]
-            dog = new_from_db(dog_data)
+            dog_atts = dog[0]
+            dog = new_from_db(dog_atts)
           else
             #if the instance of the dog DOES ALREADY exist in the database then it reinstantiates the existing entry while preventing a duplicate entry
             dog = self.create(name: name, breed: breed)

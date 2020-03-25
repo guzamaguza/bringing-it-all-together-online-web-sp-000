@@ -56,6 +56,12 @@ class Dog
         end.first
     end
 
+    def self.find_by_id(id)
+        sql = "SELECT * FROM dogs WHERE id = ?"
+        dog = DB[:conn].execute(sql, id)
+        new_from_db(dog[0])
+    end
+
     def update
       sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
       DB[:conn].execute(sql, self.name, self.breed, self.id)
